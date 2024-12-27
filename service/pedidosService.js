@@ -76,20 +76,17 @@ function cierreDeVenta() {
   const pedidos = pedidosRepo.getPedidos();
   const caja = cajaService.obtenerCaja();
   
-  // Generar resumen antes de reiniciar todo
   const resumen = {
     ingresos: caja.total,
     pedidos: pedidos,
     gastos: caja.gastos || 0
   };
 
-  // Iniciar temporizador de 15 minutos
   setTimeout(() => {
-    // Reiniciar datos después de 15 minutos
     pedidosRepo.clearPedidos();
     cajaService.actualizarCaja({ total: 0, ingresos: 0, vendido: 0, gastos: 0 });
     console.log('Datos reiniciados después del cierre de venta.');
-  }, 15*60*1000); // 15 minutos en milisegundos
+  }, 15*60*1000); 
 
   return resumen;
 }
