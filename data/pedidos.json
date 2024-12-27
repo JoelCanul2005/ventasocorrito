@@ -1,14 +1,2 @@
 [
-  {
-    "productos": [
-      {
-        "nombre": "Salbutes",
-        "cantidad": 3,
-        "subtotal": 45
-      }
-    ],
-    "nota": "Sin cebolla",
-    "total": 45,
-    "id": 1
-  }
 ]
