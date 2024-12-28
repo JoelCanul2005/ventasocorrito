@@ -60,7 +60,7 @@ function actualizarPedido(id, updatedPedido) {
 
 function eliminarPedido(id) {
   const pedido = pedidosRepo.deletePedido(id);
-  if (pedido) {
+  if (pedido.pagado) {
     // Restar el monto de la caja al eliminar el pedido
     const caja = cajaService.obtenerCaja();
     caja.total -= pedido.total;
