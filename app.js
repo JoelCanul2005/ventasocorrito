@@ -5,7 +5,7 @@ const cors = require('cors');
 app.use(express.json());
 
 app.use(cors({
-  origin: 'http://127.0.0.1:57125' // Cambia esto al dominio de tu frontend en producción
+  origin: ['http://127.0.0.1:57125', 'https://ventassocorrito.onrender.com']
 }));
 
 const cajaController = require('./controllers/cajaController');
