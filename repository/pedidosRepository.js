@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const pedidosFilePath = path.join(__dirname, '../data/pedidos.json');
+const gastosFilePath = path.join(__dirname, '../data/gastos.json');
+const ingresosFilePath = path.join(__dirname, '../data/ingresos.json');
 const cajaFilePath = path.join(__dirname, '../data/caja.json');
 
 function getPedidos() {
@@ -72,6 +74,8 @@ function actualizarCaja(monto) {
 function clearPedidos() {
     try {
       fs.writeFileSync(pedidosFilePath, JSON.stringify([]));
+      fs.writeFileSync(gastosFilePath, JSON.stringify([]));
+      fs.writeFileSync(ingresosFilePath, JSON.stringify([]));
       console.log('Pedidos eliminados exitosamente.');
     } catch (error) {
       console.error('Error al limpiar pedidos:', error.message);
