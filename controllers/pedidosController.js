@@ -66,7 +66,7 @@ function cierreDeVenta(req, res) {
   try {
     const resumen = pedidosService.cierreDeVenta();
     res.status(200).json({
-      mensaje: 'Cierre de venta realizado exitosamente. El sistema se reiniciará en 15 minutos.',
+      mensaje: 'Cierre de venta realizado exitosamente. El sistema se reiniciará.',
       resumen
     });
   } catch (error) {
