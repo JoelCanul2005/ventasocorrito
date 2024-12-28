@@ -71,7 +71,7 @@ function actualizarCaja(monto) {
 
 function clearPedidos() {
     try {
-      fs.writeFileSync(pedidosPath, JSON.stringify([]));
+      fs.writeFileSync(pedidosFilePath, JSON.stringify([]));
       console.log('Pedidos eliminados exitosamente.');
     } catch (error) {
       console.error('Error al limpiar pedidos:', error.message);
