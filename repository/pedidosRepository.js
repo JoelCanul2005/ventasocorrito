@@ -76,7 +76,6 @@ function clearPedidos() {
     } catch (error) {
       console.error('Error al limpiar pedidos:', error.message);
     }
-  }
-  
+}
 
 module.exports = { getPedidos, clearPedidos, getPedidoById, addPedido, updatePedido, deletePedido, actualizarCaja };

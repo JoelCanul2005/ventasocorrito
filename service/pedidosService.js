@@ -73,21 +73,27 @@ function eliminarPedido(id) {
 
 
 function cierreDeVenta() {
-  const pedidos = pedidosRepo.getPedidos();
-  const caja = cajaService.obtenerCaja();
-  
-  const resumen = {
-    ingresos: caja.total,
-    pedidos: pedidos,
-    gastos: caja.gastos || 0
-  };
+  try {
+      const pedidos = pedidosRepo.getPedidos();
+      const caja = cajaService.obtenerCaja();
 
-  setTimeout(() => {
-    pedidosRepo.clearPedidos();
-    cajaService.actualizarCaja({ total: 0, ingresos: 0, vendido: 0, gastos: 0 });
-    console.log('Datos reiniciados después del cierre de venta.');
-  }, 15); 
+      const resumen = {
+          ingresos: caja.total,
+          pedidos: pedidos,
+          gastos: caja.gastos || 0
+      };
 
-  return resumen;
+      // Reiniciar datos sincronizadamente
+      pedidosRepo.clearPedidos();
+      cajaService.actualizarCaja({ total: 0, ingresos: 0, vendido: 0, gastos: 0 });
+      console.log('Datos reiniciados después del cierre de venta.');
+
+      return resumen;
+  } catch (error) {
+      console.error('Error en el cierre de venta:', error.message);
+      throw error; // Lanzar error para que el controlador lo capture
+  }
 }
+
+
 module.exports = { agregarPedido,cierreDeVenta, obtenerPedidos, obtenerPedidoPorId, marcarComoPagado, marcarComoEntregado, actualizarPedido, eliminarPedido };
